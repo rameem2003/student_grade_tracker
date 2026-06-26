@@ -15,7 +15,20 @@ class AddSubjectScreen extends StatelessWidget {
 
     final markController = TextEditingController();
     return Scaffold(
-      appBar: AppBar(title: const Text("Add Subject")),
+      appBar: AppBar(
+        title: const Text(
+          "Add Subject",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+        leading: IconButton(
+          onPressed: () => context.pop(),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          color: Colors.white,
+          tooltip: "Back",
+        ),
+      ),
       body: Padding(
         padding: EdgeInsets.all(20),
         child: Form(

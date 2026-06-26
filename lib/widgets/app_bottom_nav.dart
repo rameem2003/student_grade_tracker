@@ -10,6 +10,10 @@ class AppBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+      selectedItemColor: Colors.white,
+      selectedLabelStyle: TextStyle(fontWeight: FontWeight.bold),
+      unselectedItemColor: Colors.grey[400],
       currentIndex: index,
       onTap: (value) {
         HomePage.currentIndex.value = value;

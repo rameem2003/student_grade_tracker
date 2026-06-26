@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:student_grade_tracker/providers/subject_provider.dart';
 import 'package:student_grade_tracker/providers/theme_provider.dart';
-import 'package:student_grade_tracker/widgets/AppBar.dart';
 
 class SubjectListScreen extends StatelessWidget {
   const SubjectListScreen({super.key});
@@ -14,7 +13,11 @@ class SubjectListScreen extends StatelessWidget {
     final themeProvider = context.watch<ThemeProvider>();
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Subjects"),
+        title: const Text(
+          "Student Grade Tracker",
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Theme.of(context).colorScheme.primaryContainer,
         actions: [
           IconButton(
             onPressed: () {
@@ -22,6 +25,7 @@ class SubjectListScreen extends StatelessWidget {
             },
             icon: Icon(
               themeProvider.isDark ? Icons.light_mode : Icons.dark_mode,
+              color: Colors.white,
             ),
           ),
         ],
@@ -139,12 +143,16 @@ class SubjectListScreen extends StatelessWidget {
                                 vertical: 8,
                               ),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(5),
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                               child: Text(
                                 subject.grade,
-                                style: Theme.of(context).textTheme.labelLarge
-                                    ?.copyWith(fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
                               ),
                             ),
                           ],
