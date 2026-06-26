@@ -20,17 +20,39 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
 
-      child: Consumer<ThemeProvider>(
-        builder: (_, themeProvider, _) {
-          return MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            routerConfig: appRouter,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            themeMode: themeProvider.mode,
-          );
-        },
-      ),
+      child: Root(),
+
+      // child: Consumer<ThemeProvider>(
+      //   builder: (_, themeProvider, _) {
+      //     return MaterialApp.router(
+      //       debugShowCheckedModeBanner: false,
+      //       routerConfig: appRouter,
+      //       theme: AppTheme.lightTheme,
+      //       darkTheme: AppTheme.darkTheme,
+      //       themeMode: notifier.isDark ? ThemeMode.dark : ThemeMode.light,
+      //     );
+      //   },
+      // ),
+    );
+  }
+}
+
+class Root extends StatelessWidget {
+  const Root({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final notifier = Provider.of<ThemeProvider>(context);
+    return Consumer<ThemeProvider>(
+      builder: (_, notifier, __) {
+        return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
+          routerConfig: appRouter,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: notifier.isDark ? ThemeMode.dark : ThemeMode.light,
+        );
+      },
     );
   }
 }

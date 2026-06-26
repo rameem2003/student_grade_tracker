@@ -21,3 +21,5 @@ class AppTheme {
     scaffoldBackgroundColor: const Color(0xFF1E1E1E),
   );
 }
+
+// 0xFF0066CC

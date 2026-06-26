@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:student_grade_tracker/providers/subject_provider.dart';
+import 'package:student_grade_tracker/providers/theme_provider.dart';
 import 'package:student_grade_tracker/widgets/AppBar.dart';
 
 class SubjectListScreen extends StatelessWidget {
@@ -10,8 +11,21 @@ class SubjectListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<SubjectProvider>(context);
+    final themeProvider = context.watch<ThemeProvider>();
     return Scaffold(
-      appBar: AppBar(title: const Text("Subjects")),
+      appBar: AppBar(
+        title: const Text("Subjects"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              themeProvider.toggleTheme();
+            },
+            icon: Icon(
+              themeProvider.isDark ? Icons.light_mode : Icons.dark_mode,
+            ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.push('/add'),
         child: const Icon(Icons.add),
