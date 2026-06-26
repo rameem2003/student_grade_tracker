@@ -28,9 +28,12 @@ class SubjectProvider extends ChangeNotifier {
   String get overallGrade {
     final avg = averageMark;
 
-    if (avg >= 80) return "A";
-    if (avg >= 65) return "B";
-    if (avg >= 50) return "C";
+    if (avg >= 80) return "A+";
+    if (avg >= 70) return "A";
+    if (avg >= 60) return "A-";
+    if (avg >= 50) return "B";
+    if (avg >= 40) return "C";
+    if (avg >= 33) return "D";
     return "F";
   }
 
